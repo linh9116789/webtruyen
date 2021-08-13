@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="cart">
-                <div class="card-header">Thêm danh mục </div>
+                <div class="card-header">Sửa danh mục </div>
                     <div class="car-body">
                         @if ($errors->any())
                             <div class="alert alert-danger">
@@ -21,11 +21,12 @@
                                 {{ session('status') }}
                             </div>
                         @endif
-                        <form action="{{route('category.store')}}" method="POST">
+                        <form action="{{route('category.update',$category->id)}}" method="POST">
+                            @method('PUT')
                             @csrf
                             <div class="form-group">
                               <label for="exampleInputEmail1">Thêm danh mục</label>
-                              <input type="text" class="form-control" value="{{old('c_name')}}" name="c_name">
+                              <input type="text" class="form-control" value="{{$category->c_name}}" name="c_name">
                             </div>
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </form>

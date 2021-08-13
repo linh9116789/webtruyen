@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use App\Models\Story;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use Carbon\Carbon;
 
 class StoryController extends Controller
 {
@@ -13,7 +17,7 @@ class StoryController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.story.index');
     }
 
     /**
@@ -23,7 +27,8 @@ class StoryController extends Controller
      */
     public function create()
     {
-        //
+        $category = Category::all();
+        return view('admin.story.create')->with(compact('category'));
     }
 
     /**
@@ -34,7 +39,22 @@ class StoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'sto_name'=>'required|unique:storys,sto_name|max:255'
+        ],
+        [
+            'sto_name.required'   =>'Dữ liệu không được để trống !',
+            'sto_name.unique'     =>'Dữ liệu đã tồn tại !'
+        ]
+        );
+        $storys = new Story();
+        $storys->sto_name = $data['sto_name'];
+        $storys->sto_slug = Str::slug($request->sto_name);
+        $storys->sto_description = $data['sto_description'];
+        $storys->sto_content = $data['sto_content'];
+        $storys->created_at = Carbon::now();
+        $storys->save();
+        return redirect()->back()->with('status','Thêm dữ liệu thành công !');
     }
 
     /**
