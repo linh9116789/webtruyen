@@ -45,4 +45,41 @@ class ChapterController extends Controller
         $chapter->save();
         return redirect()->back()->with('status','Thêm dữ liệu thành công !');
     }
+
+    public function edit($id)
+    {
+        $story = Story::all();
+        $chapter = Chapter::findOrFail($id);
+        $viewData = [
+            'story'     =>$story,
+            'chapter'   =>$chapter
+        ];
+        return view('admin.chapter.edit',$viewData);
+    }
+
+    public function update(Request $request, $id){
+        $data = $request->validate([
+            'chap_title' => 'required',
+            'chap_content'=>'required',
+            'chap_story_id'=>'required'
+        ],[
+            'chap_name.required'    =>'Dữ liệu trống !',
+            'chap_content'          =>'Dữ liệu trống !'
+        ]
+        );
+        $chapter = Chapter::find($id);
+        $chapter->chap_title = $data['chap_title'];
+        $chapter->chap_content = $data['chap_content'];
+        $chapter->chap_story_id = $data['chap_story_id'];
+        $chapter->updated_at   = Carbon::now();
+
+        $chapter->save();
+        return redirect()->back()->with('status','Cập nhật dữ liệu thành công !');
+    }
+
+    public function destroy($id)
+    {
+        Chapter::find($id)->delete();
+        return redirect()->back()->with('status','Xóa dữ liệu thành công !');
+    }
 }

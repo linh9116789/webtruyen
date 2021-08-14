@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\StoryController;
 use App\Http\Controllers\ChapterController;
+use App\Http\Controllers\FrontendController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,11 +19,8 @@ use App\Http\Controllers\ChapterController;
 |
 */
 
-Route::get('/',
-function () {
-    return view('welcome');
-});
-
+Route::get('/',[FrontendController::class,'home']);
+Route::get('/doc-truyen/{id}', [FrontendController::class,'doctruyen'])->name('doc-truyen');
 Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
