@@ -5,19 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Category extends Model
+class Chapter extends Model
 {
     use HasFactory;
-
     public $timestamps = false;
     protected $fillable = [
-        'c_name','c_slug','created_at','updated_at'
+        'chap_title','pro_content','chap_story_id','created_at','updated_at'
     ];
 
     protected $primariKey = 'id';
-    protected $table = 'categories';
-    public function storys()
+    protected $table = 'chapters';
+
+    public function story()
     {
-        return $this->hasMany(Story::class,'sto_category_id');
+        return  $this->belongsTo(Story::class, 'chap_story_id');
     }
 }

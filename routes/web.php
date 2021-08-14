@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\StoryController;
+use App\Http\Controllers\ChapterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,8 +28,8 @@ Auth::routes();
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::resource('/category', CategoryController::class);
-
-Route::resource('/Story', StoryController::class);
+Route::resource('/story', StoryController::class);
+Route::resource('/chapter', ChapterController::class);
 
 
 

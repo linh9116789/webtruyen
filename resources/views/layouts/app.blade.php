@@ -110,9 +110,19 @@
                                     Truyện
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{route('Story.index')}}">Liệt kê danh sách truyện </a>
+                                    <a class="dropdown-item" href="{{route('story.index')}}">Liệt kê danh sách truyện </a>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="{{route('Story.create')}}">Thêm</a>
+                                    <a class="dropdown-item" href="{{route('story.create')}}">Thêm</a>
+                                    </div>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Chapter
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{route('chapter.index')}}">Liệt kê danh sách truyện </a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="{{route('chapter.create')}}">Thêm</a>
                                     </div>
                                 </li>
                                 {{-- <li class="nav-item">
@@ -134,4 +144,20 @@
         </main>
     </div>
 </body>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script>
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#blah').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+
+    }
+    $("#imgInp").change(function(){
+    readURL(this);
+    });
+</script>
 </html>

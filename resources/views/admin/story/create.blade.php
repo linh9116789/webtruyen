@@ -21,11 +21,11 @@
                                 {{ session('status') }}
                             </div>
                         @endif
-                        <form action="{{route('store.store')}}" method="POST">
+                        <form action="{{route('story.store')}}" method="POST" enctype="multipart/form-data" >
                             @csrf
                             <div class="form-group">
                               <label for="exampleInputEmail1">Tên truyện</label>
-                              <input type="text" class="form-control" value="{{old('sto_name')}}" name="c_name">
+                              <input type="text" class="form-control" value="{{old('sto_name')}}" name="sto_name">
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Danh mục truyện</label>
@@ -34,20 +34,21 @@
                                         <option value="{{$cate->id}}">{{$cate->c_name}}</option>
                                     @endforeach
                                 </select>
-
-
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputEmail1"></label>
-                                <input type="text" class="form-control" style="height: 250px;width:200px">
+                                <img src="{{asset('images/defaultimg.jpg')}}" style="border: 1px solid #858796;" id="blah" alt="" width="200px" height="250px">
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Ảnh </label>
-                                <input type="file" class="form-control" value="{{old('sto_avatar')}}" name="c_name">
+                                <input type="file" id="imgInp" class="form-control" value="{{old('sto_avatar')}}" name="sto_avatar">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Mô tả tiêu đề</label>
+                                <textarea name="sto_description" value="{{old('sto_description')}}" id="" rows="5" style="resize: none" class="form-control"></textarea>
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Nội dung truyện</label>
-                                <textarea name="sto_content" id="" rows="5" style="resize: none" class="form-control"></textarea>
+                                <textarea name="sto_content" value="{{old('sto_content')}}" id="" rows="5" style="resize: none" class="form-control"></textarea>
                             </div>
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </form>
