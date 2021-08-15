@@ -6,6 +6,7 @@ use App\Models\Chapter;
 // use App\Models\Chapters;
 use Illuminate\Http\Request;
 use App\Models\Story;
+use Illuminate\Support\Str;
 use Carbon\Carbon;
 
 class ChapterController extends Controller
@@ -38,6 +39,7 @@ class ChapterController extends Controller
         );
         $chapter = new Chapter();
         $chapter->chap_title = $data['chap_title'];
+        $chapter->chap_slug = Str::slug($request->chap_title);
         $chapter->chap_content = $data['chap_content'];
         $chapter->chap_story_id = $data['chap_story_id'];
         $chapter->created_at   = Carbon::now();
@@ -69,6 +71,7 @@ class ChapterController extends Controller
         );
         $chapter = Chapter::find($id);
         $chapter->chap_title = $data['chap_title'];
+        $chapter->chap_slug = Str::slug($request->chap_title);
         $chapter->chap_content = $data['chap_content'];
         $chapter->chap_story_id = $data['chap_story_id'];
         $chapter->updated_at   = Carbon::now();

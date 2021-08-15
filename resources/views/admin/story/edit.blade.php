@@ -29,6 +29,10 @@
                               <input type="text" class="form-control" value="{{$story->sto_name}}" name="sto_name">
                             </div>
                             <div class="form-group">
+                                <label for="exampleInputEmail1">Tác giả</label>
+                                <input type="text" class="form-control" value="{{$story->sto_author}}" name="sto_author">
+                            </div>
+                            <div class="form-group">
                                 <label for="exampleInputEmail1">Danh mục truyện</label>
                                 <select class="form-control" name="sto_category_id">
                                     @foreach ($category as $cate )

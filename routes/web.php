@@ -20,7 +20,10 @@ use App\Http\Controllers\FrontendController;
 */
 
 Route::get('/',[FrontendController::class,'home']);
-Route::get('/doc-truyen/{id}', [FrontendController::class,'doctruyen'])->name('doc-truyen');
+Route::get('/danh-muc/{slug}', [FrontendController::class,'danhmuc']);
+
+Route::get('/xem-truyen/{slug}', [FrontendController::class,'xemtruyen']);
+Route::get('/xem-chapter/{slug}', [FrontendController::class,'xemchapter']);
 Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');

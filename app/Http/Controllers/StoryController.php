@@ -42,6 +42,7 @@ class StoryController extends Controller
             'sto_content'=>'required',
             'sto_category_id'=>'required',
             'sto_avatar'=>'required',
+            'sto_author'=>'required'
         ],
         [
             'sto_name.required'         =>'Dữ liệu không được để trống !',
@@ -50,6 +51,7 @@ class StoryController extends Controller
             'sto_content.required'      =>'Dữ liệu không được để trống !',
             'sto_category_id.required'  =>'Dữ liệu không được để trống !',
             'sto_avatar.required'       =>'Dữ liệu không được để trống !',
+            'sto_author.required'       =>'Dữ liệu không được để trống !'
         ]
         );
         $storys = new Story();
@@ -58,6 +60,7 @@ class StoryController extends Controller
         $storys->sto_description = $data['sto_description'];
         $storys->sto_content = $data['sto_content'];
         $storys->sto_category_id = $data['sto_category_id'];
+        $storys->sto_author = $data['sto_author'];
         // $storys->sto_avatar = $data['sto_avatar'];
         $storys->created_at = Carbon::now();
         // $storys->sto_avatar = $data['sto_avatar'];
@@ -104,12 +107,14 @@ class StoryController extends Controller
             'sto_description'=>'required',
             'sto_content'=>'required',
             'sto_category_id'=>'required',
+            'sto_author'    =>'required'
         ],
         [
             'sto_name.required'         =>'Dữ liệu không được để trống !',
             'sto_description.required'  =>'Dữ liệu không được để trống !',
             'sto_content.required'      =>'Dữ liệu không được để trống !',
             'sto_category_id.required'  =>'Dữ liệu không được để trống !',
+            'sto_author.required'  =>'Dữ liệu không được để trống !',
         ]
         );
         $storys =Story::find($id);
@@ -118,6 +123,7 @@ class StoryController extends Controller
         $storys->sto_description = $data['sto_description'];
         $storys->sto_content = $data['sto_content'];
         $storys->sto_category_id = $data['sto_category_id'];
+        $storys->sto_author = $data['sto_author'];
         // $storys->sto_avatar = $data['sto_avatar'];
         $storys->created_at = Carbon::now();
         // $storys->sto_avatar = $data['sto_avatar'];

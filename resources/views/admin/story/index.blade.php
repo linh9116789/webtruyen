@@ -20,6 +20,7 @@
                                     <th>Tên truyện</th>
                                     <th>Avatar</th>
                                     <th>Thể loại</th>
+                                    <th>Tác giả</th>
                                     <th>Trạng thái</th>
                                     <th>Create_Time</th>
                                     <th>Active</th>
@@ -33,6 +34,7 @@
 
                                             <td><img src="{{pare_url_file($story->sto_avatar)}}" style="hight:100px;width:100px"></td>
                                             <td>{{$story->category->c_name}}</td>
+                                            <td>{{$story->sto_author}}</td>
                                             <td>
                                                 @if($story->sto_active == 0)
                                                     <a href="" class="btn btn-info ">Đang ra</a>
