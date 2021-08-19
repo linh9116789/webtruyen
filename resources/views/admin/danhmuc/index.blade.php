@@ -24,24 +24,24 @@
                                     <th>Active</th>
                                 </tr>
                                 <?php $i = 0; ?>
-                                @if($categories)
-                                    @foreach($categories as $category)
+                                @if($danhmucs)
+                                    @foreach($danhmucs as $danhmuc)
                                         <tr>
                                             <td>{{ $i++}}</td>
-                                            <td>{{$category->c_name}}</td>
+                                            <td>{{$danhmuc->d_name}}</td>
 
                                             <td>
-                                                @if($category->c_status == 1)
+                                                @if($danhmuc->d_status == 1)
                                                     <a href="" class="btn btn-info ">Show</a>
                                                 @else
                                                     <a href="" class="btn btn-default ">Hide</a>
                                                 @endif
                                             </td>
-                                            <td>{{$category->created_at}} </td>
-                                            <td>{{$category->updated_at}} </td>
+                                            <td>{{$danhmuc->created_at}} </td>
+                                            <td>{{$danhmuc->updated_at}} </td>
                                             <td>
-                                                <a href="{{route('category.edit',$category->id)}}" class="btn btn-success"><i class="fa fa-pencil"></i> Edit</a>
-                                                <form action="{{route('category.destroy',$category->id)}}" method="POST">
+                                                <a href="{{route('danhmuc.edit',$danhmuc->id)}}" class="btn btn-success"><i class="fa fa-pencil"></i> Edit</a>
+                                                <form action="{{route('danhmuc.destroy',$danhmuc->id)}}" method="POST">
                                                     @method('DELETE')
                                                     @csrf
                                                     <button onclick="return confirm('Bạn muốn xóa ?')" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</button>

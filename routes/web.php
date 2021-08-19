@@ -7,6 +7,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\StoryController;
 use App\Http\Controllers\ChapterController;
 use App\Http\Controllers\FrontendController;
+use App\Http\Controllers\DanhmucController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,6 +32,7 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::resource('/category', CategoryController::class);
 Route::resource('/story', StoryController::class);
 Route::resource('/chapter', ChapterController::class);
+Route::resource('/danhmuc', DanhmucController::class);
 
 
 

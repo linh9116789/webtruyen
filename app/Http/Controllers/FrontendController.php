@@ -59,9 +59,22 @@ class FrontendController extends Controller
         $category = Category::orderByDesc('id')->get();
         $story    = Chapter::where('chap_slug',$slug)->first();
         $chapter  = Chapter::with('story')->where('chap_slug',$slug)->where('chap_story_id',$story->chap_story_id)->first();
+        $all_chapter = Chapter::with('story')->orderBy('id','ASC')->where('chap_story_id',$story->chap_story_id)->get();
+
+        $next_chapter = Chapter::where('chap_story_id',$story->chap_story_id)->where('id','>',$chapter->id)->min('chap_slug');
+
+        $max_id = Chapter::where('chap_story_id',$story->chap_story_id)->orderBy('id','DESC')->first();
+        $min_id = Chapter::where('chap_story_id',$story->chap_story_id)->orderBy('id','ASC')->first();
+
+        $previous_chapter = Chapter::where('chap_story_id',$story->chap_story_id)->where('id','<',$chapter->id)->max('chap_slug');
         $viewData = [
             'category' => $category,
-            'chapter'  => $chapter
+            'chapter'  => $chapter,
+            'all_chapter'=>$all_chapter,
+            'next_chapter'=>$next_chapter,
+            'previous_chapter'=>$previous_chapter,
+            'max_id'    =>$max_id,
+            'min_id'    =>$min_id
         ];
         return view('pages.chapter',$viewData);
     }

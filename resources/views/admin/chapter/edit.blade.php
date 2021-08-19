@@ -38,7 +38,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Nội dung chapter</label>
-                                <textarea name="chap_content" id="" rows="5" style="resize: none" class="form-control">{{$chapter->chap_content}}</textarea>
+                                <textarea name="chap_content" id="editor" rows="5" style="resize: none" class="form-control">{{$chapter->chap_content}}</textarea>
                             </div>
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </form>

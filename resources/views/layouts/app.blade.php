@@ -107,6 +107,16 @@
                                 </li>
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Danh mục truyện
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{route('danhmuc.index')}}">Liệt kê danh mục </a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="{{route('danhmuc.create')}}">Thêm</a>
+                                    </div>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Truyện
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -145,6 +155,10 @@
     </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="//cdn.ckeditor.com/4.16.2/full/ckeditor.js"></script>
+    <script>
+        CKEDITOR.replace('editor');
+    </script>
 <script>
     function readURL(input) {
         if (input.files && input.files[0]) {

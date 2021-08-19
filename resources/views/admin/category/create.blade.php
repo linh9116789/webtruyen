@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="cart">
-                <div class="card-header">Thêm danh mục </div>
+                <div class="card-header">Thêm thể loại </div>
                     <div class="car-body">
                         @if ($errors->any())
                             <div class="alert alert-danger">
